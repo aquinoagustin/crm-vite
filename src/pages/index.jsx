@@ -7,7 +7,6 @@ export function loader(){
 }
 export default function Index(){
     const clientes = useLoaderData();
-    console.log(clientes);
     return(
         <div>
             <h1 className="font-black text-4xl">Clientes</h1>
