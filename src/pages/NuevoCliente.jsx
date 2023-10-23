@@ -1,30 +1,30 @@
-import { useNavigate,Form,useActionData } from "react-router-dom";
+import { useNavigate,Form,useActionData,redirect } from "react-router-dom";
 import Formulario from '../components/Formulario';
 import Error from '../components/Error';
-export async function action({request}){
-  const formData = await request.formData();
-  const datos = Object.fromEntries(formData);
+import {agregarCliente} from '../data/clientes'
+export async function action({request}) {
+  const formData = await request.formData()
+  const datos = Object.fromEntries(formData)
+  const email = formData.get('email')
 
-  //Validacion
-  const error = [];
-  if(Object.values(datos).includes('')){
-    error.push('Todos los campos son obligatorios');
+  // Validación
+  const errores = []
+  if(Object.values(datos).includes('')) {
+      errores.push('Todos los campos son obligatorios')
   }
+
   let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
-
-  if(!regex.test(email)){
-    error.push('El mail no es valido')
+  if(!regex.test(email)) {
+      errores.push('El Email no es válido')
   }
 
-  if(Object.keys(error).length){
-    return error;
+  // Retornar datos si hay errores
+  if(Object.keys(errores).length) {
+      return errores
   }
-
-
-
-  return 0;
+  await agregarCliente(datos)
+  return redirect('/')
 }
-
 export default function NuevoCliente() {
   const error = useActionData();
   const navigate = useNavigate();

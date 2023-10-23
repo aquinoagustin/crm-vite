@@ -3,7 +3,7 @@ import Cliente from '../components/Cliente';
 import { obtenerClientes } from '../data/clientes';
 export function loader(){
     const clientes = obtenerClientes();
-    
+    return clientes;
 }
 export default function Index(){
     const clientes = useLoaderData();
