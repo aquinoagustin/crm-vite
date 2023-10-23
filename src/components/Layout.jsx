@@ -2,7 +2,6 @@ import {Outlet,Link,useLocation} from 'react-router-dom';
 export default function Layout(){
 
     const location = useLocation();
-    console.log(location.pathname)
 
     return(
         <div className='md:flex md:min-h-screen'>
