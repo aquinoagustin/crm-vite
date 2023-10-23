@@ -10,5 +10,7 @@ Para crear un administrador de clientes, para una empresa X. En donde podemos ha
 ### react-router
 ### react-router-dom
 
+<img src=https://github.com/aquinoagustin/crm-vite/assets/60743500/9f39221f-9685-4988-bd9e-1ead01f4998d  height="250">
+
 #### [Link al proyecto](https://ornate-pie-ef8964.netlify.app/)
 
